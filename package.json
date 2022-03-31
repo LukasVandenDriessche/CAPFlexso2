@@ -6,9 +6,11 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap/cds": "^5",
+    "@sap/cds": "^5.9.0",
+    "@sap/xssec": "^3.2.13",
     "express": "^4",
-    "hdb": "^0.18.3"
+    "hdb": "^0.18.3",
+    "passport": "^0.5.2"
   },
   "devDependencies": {
     "sqlite3": "^5.0.2"
@@ -45,6 +47,9 @@
     "requires": {
       "db": {
         "kind": "sql"
+      },
+      "auth": {
+        "kind": "xsuaa-auth"
       }
     },
     "hana": {

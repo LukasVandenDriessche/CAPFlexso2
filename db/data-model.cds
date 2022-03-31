@@ -5,7 +5,7 @@ entity Locations
     key Id : UUID;
     name : String;
     lots : Association to many Lots on lots.location = $self;
-    //registrations : Association to many Registrations on registrations.location = $self;
+    registrations : Association to many Registrations on registrations.location = $self;
 }
 
 entity Lots
@@ -21,17 +21,18 @@ entity Registrations
 {
     key Id : UUID;
     time : DateTime;
-    location_id : String;
-    registeredlots : Composition of many {key lot: Association to RegisteredLots};
+    location : Association to Locations;
+    registeredlots : Association to many RegisteredLots on registeredlots.registration = $self;
 }
 
 entity RegisteredLots 
 {
     key Id : UUID;
+    originalLotId : String;
     nr : Integer;
     floor : String;
     available : Lots.available;
-    registrations : Association to many Registrations.registeredlots on registrations.lot = $self;
+    registration : Association to one Registrations;
 }
 
 type Lots.available : String enum
