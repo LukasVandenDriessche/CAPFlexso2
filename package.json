@@ -49,7 +49,20 @@
         "kind": "sql"
       },
       "auth": {
-        "kind": "xsuaa-auth"
+        "kind": "basic-auth",
+        "users": {
+          "alice": {
+            "roles": [
+              "admin"
+            ]
+          },
+          "bob": {
+            "roles": [
+              "builder"
+            ]
+          },
+          "*": true
+        }
       }
     },
     "hana": {
