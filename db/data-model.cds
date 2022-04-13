@@ -1,21 +1,23 @@
+//namespace sap.cap.parkingapp;
 namespace sap.cap.parkingapp;
-
 entity Lots {
-    key ID     : UUID;
-        nr     : Integer;
-        floor  : String;
-        status : Boolean;
-        location : Association to one Locations;
+    key ID            : UUID;
+        nr            : Integer;
+        floor         : String;
+        location      : Association to one Locations;
+        registrations : Association to many Registrations
+                            on registrations.lot = $self;
 }
 
 entity Locations {
-    key ID   : UUID;
-        name : String;
-        lots : Association to many Lots on lots.location = $self;
+    key name : String;
+        lots : Association to many Lots
+                   on lots.location = $self;
 }
 
 entity Registrations {
-    key ID : UUID;
-    time : DateTime;
-    location : Association to one Locations;
+    key ID     : UUID;
+        regtime   : DateTime;
+        available : Boolean;
+        lot   : Association to one Lots;
 }
