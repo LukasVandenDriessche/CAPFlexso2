@@ -1,3 +1,6 @@
+
+# auto generated wildcard
+.env
 # CAP SAP_CAP_ParkingApp
 _out
 *.db
